@@ -1,7 +1,6 @@
 package chesslayer;
 
 import boardlayer.Board;
-import boardlayer.Position;
 import chesslayer.pieces.King;
 import chesslayer.pieces.Rook;
 
@@ -15,9 +14,9 @@ public class ChessMatch {
     }
 
     public ChessPiece[][] getPieces() {
-        ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColunms()];
+        ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
         for (int i=0; i<board.getRows(); i++) {
-            for (int j=0; j<board.getColunms(); j++) {
+            for (int j=0; j<board.getColumns(); j++) {
                 mat[i][j] = (ChessPiece) board.getPiece(i, j);
             }
         }

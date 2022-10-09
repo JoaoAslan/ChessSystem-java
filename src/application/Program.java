@@ -1,7 +1,5 @@
 package application;
 
-import boardlayer.Board;
-import boardlayer.Position;
 import chesslayer.ChessMatch;
 
 public class Program {
