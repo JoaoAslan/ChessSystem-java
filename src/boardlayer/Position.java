@@ -1,6 +1,5 @@
 package boardlayer;
 
-// CLASSE GENERICA
 public class Position {
 
     private int row;
