@@ -7,11 +7,18 @@ import chesslayer.exceptions.ChessException;
 import chesslayer.pieces.King;
 import chesslayer.pieces.Rook;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChessMatch {
 
     private int turn;
     private Color currentPlayer;
     private Board board;
+
+    private List<Piece> piecesOnTheBoard = new ArrayList<>();
+    private List<Piece> capturedPieces = new ArrayList<>();
+
 
     public ChessMatch() {
         board = new Board(8, 8);
@@ -56,9 +63,13 @@ public class ChessMatch {
 
     private Piece makeMove(Position source, Position target) {
         Piece p = board.removePiece(source);
-        Piece capturedPice = board.removePiece(target);
+        Piece capturedPiece = board.removePiece(target);
         board.placePiece(p, target);
-        return capturedPice;
+        if (capturedPiece != null) {
+            piecesOnTheBoard.remove(capturedPiece);
+            capturedPieces.add(capturedPiece);
+        }
+        return capturedPiece;
     }
 
     private void validateSourcePosition(Position position) {
@@ -88,6 +99,7 @@ public class ChessMatch {
 
     private void placeNewPiece(char colunm, int row, ChessPiece piece) {
         board.placePiece(piece, new ChessPosition(colunm, row).toPosition());
+        piecesOnTheBoard.add(piece);
     }
 
     private void initialSetup() {
